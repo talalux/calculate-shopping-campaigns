@@ -1,0 +1,72 @@
+.main_cart{
+    .container{
+        max-width: 1160px;
+        padding: 30px 20px;
+        margin: auto;
+        .title{
+            text-align: center;
+        }
+        .items_wrapper{
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            flex-wrap: wrap;
+            .list_items{
+                width: calc(25% - 7.5px);
+                .border{
+                    padding: 10px;
+                    border: 1px solid #333;
+                    border-radius: 10px;
+                }
+                border-radius: 10px;
+                .items_info_wrapper{
+                    display: flex;
+                    flex-direction: column;
+                }
+                input{
+                    width: fit-content;
+                }
+            }
+            @media (max-width:900px) {
+                .list_items{
+                    width: calc(50% - 10px);
+                }
+            }
+            @media (max-width:767px) {
+                .list_items{
+                    width: 100%;
+                }
+            }
+        }
+        .price_detail_wrapper{
+            margin-top: 20px;
+            .campaign_wrapper{
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .total_price_wrapper{
+                margin-top: 20px;
+            }
+        }
+        .btn_submit{
+            display: flex;
+            border: 1px solid orange;
+            width: fit-content;
+            padding: 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: .3s ease;
+            font-size: 20px;
+            margin: 20px auto;
+            &:hover{
+                color: #fff;
+                background-color: orange;
+            }
+        }
+    }
+}
+body{
+    margin: 0;
+}
