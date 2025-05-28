@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     appendInput().then(() => {
         inputNumber();
     });
+    buttonSubmit();
 });
 
 function fixDiscount(
@@ -79,7 +80,7 @@ function appendInput(){
                         inputHTML += '<span class="price_items">price: '+items.price+' THB</span>'
                     inputHTML += '</div>'
                     inputHTML += '<span>amount: </span>'
-                    inputHTML += '<input type="text" data-category="'+items.category+'">'
+                    inputHTML += '<input type="text" data-price="'+items.price+'" data-title="'+items.title+'" data-category="'+items.category+'">'
                 inputHTML += '</div>'
             inputHTML += '</div>'
         })
@@ -108,5 +109,48 @@ function inputNumber(){
             var key = e.key;
             if(!arrIncludeNumber.some(data => data == key)) e.preventDefault();
         })
+    })
+}
+
+function buttonSubmit(){
+    var findButtonSubmit = document.querySelector('.btn_submit');
+    console.log(findButtonSubmit);
+    findButtonSubmit.addEventListener('click', () => {
+        var findAllInput = document.querySelectorAll('input[data-category]');
+        var dataValue = Array.from(findAllInput).map(data => {
+            var getTitle = data.attributes['data-title'].value
+            var getCategory = data.attributes['data-category'].value
+            var getPrice = data.attributes['data-price'].value
+            var getAmout = data.value
+            return {
+                title: getTitle,
+                category: getCategory,
+                price: parseInt(getPrice),
+                amount: getAmout == "" ? 0 : parseInt(getAmout),
+                sumPrice: parseInt(getAmout !== "" ? getAmout : 0) * parseInt(getPrice)
+            }
+        })
+        htmlCartDetail(dataValue).then(data => {
+            var findTargetAppendDetail = document.querySelector('.items_in_cart')
+            findTargetAppendDetail.innerHTML = data;
+        })
+    })
+}
+
+function htmlCartDetail(arr){
+    var html = "";
+    if(!arr) return;
+    return new Promise((resolve) => {
+        arr.forEach(data => {
+            html += '<div class="list_items_in_cart">'
+                html += '<div class="border">'
+                    html += '<span class="txt">items name: '+data.title+'</span>'
+                    html += '<span class="txt">items amount: '+data.amount+'</span>'
+                    html += '<span class="txt">items price: '+data.price+'</span>'
+                    html += '<span class="txt">items sum price: '+data.sumPrice+'</span>'
+                html += '</div>'
+            html += '</div>'
+        })
+        resolve(html)
     })
 }

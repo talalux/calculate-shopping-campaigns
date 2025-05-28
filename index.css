@@ -41,6 +41,26 @@
 .main_cart .container .price_detail_wrapper {
   margin-top: 20px;
 }
+.main_cart .container .price_detail_wrapper .title_cart {
+  margin-bottom: 10px;
+  display: block;
+}
+.main_cart .container .price_detail_wrapper .items_in_cart {
+  padding-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.main_cart .container .price_detail_wrapper .items_in_cart .list_items_in_cart {
+  width: calc(33.33% - 13.33px);
+}
+.main_cart .container .price_detail_wrapper .items_in_cart .list_items_in_cart .border {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid #333;
+}
 .main_cart .container .price_detail_wrapper .campaign_wrapper {
   margin-top: 10px;
   display: flex;
