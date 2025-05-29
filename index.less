@@ -38,6 +38,12 @@
                 }
             }
         }
+        .input_discount_wrapper{
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
         .price_detail_wrapper{
             margin-top: 20px;
             .title_cart{
@@ -45,7 +51,6 @@
                 display: block;
             }
             .items_in_cart{
-                padding-left: 20px;
                 display: flex;
                 flex-wrap: wrap;
                 gap: 20px;
@@ -58,6 +63,11 @@
                         padding: 5px;
                         border: 1px solid #333;
 
+                    }
+                }
+                @media (max-width:767px) {
+                    .list_items_in_cart{
+                        width: calc(50% - 10px );
                     }
                 }
             }
