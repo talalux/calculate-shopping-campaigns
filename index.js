@@ -83,7 +83,6 @@ function inputNumber(){
 
 function buttonSubmit(){
     var findButtonSubmit = document.querySelector('.btn_submit');
-    console.log(findButtonSubmit);
     findButtonSubmit.addEventListener('click', () => {
         var findAllInput = document.querySelectorAll('input[data-category]');
         var dataValue = Array.from(findAllInput).map(data => {
