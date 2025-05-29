@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(e) {
-    fixDiscount({amountDiscount:100})
     appendInput().then(() => {
         inputNumber();
     });
