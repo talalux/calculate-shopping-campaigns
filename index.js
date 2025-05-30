@@ -118,11 +118,15 @@ function buttonSubmit(){
         var findAppendValuePercentageWithCategoryDiscount = main.querySelector('[data-campaigns="percentage_discount_category"]')
         var getDataCateClothing = dataValue.filter(data => data.category == "Clothing");
         var totalClothingPrice = getDataCateClothing.map(data => data.sumPrice);
-        totalClothingPrice = totalClothingPrice.reduce((a,b) => (a+b));
-        var discountPercentageWithCategory = parseInt(totalClothingPrice * 15) / 100;
-        totalDiscount += discountPercentageWithCategory;
-        findAppendValuePercentageWithCategoryDiscount.innerHTML = discountPercentageWithCategory;
-        totalPrice = (totalPrice - discountPercentageWithCategory);
+        if(getDataCateClothing.length > 0){
+            totalClothingPrice = totalClothingPrice.reduce((a,b) => (a+b));
+            var discountPercentageWithCategory = parseInt(totalClothingPrice * 15) / 100;
+            totalDiscount += discountPercentageWithCategory;
+            findAppendValuePercentageWithCategoryDiscount.innerHTML = discountPercentageWithCategory;
+            totalPrice = (totalPrice - discountPercentageWithCategory);
+        }else{
+            findAppendValuePercentageWithCategoryDiscount.innerHTML = 0;
+        }
 
         // fixed disoucnt
         var findInputFixedDiscount = main.querySelector('.fixed_discount');
