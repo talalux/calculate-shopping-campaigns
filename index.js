@@ -168,7 +168,7 @@ function buttonSubmit(){
         }
 
         // special
-        var findSpecialDiscount = parseInt(totalPrice/300);
+        var findSpecialDiscount = Math.floor(totalPrice/300);
         var specialDiscountValue = findSpecialDiscount * 40;
         var findAppendValueDiscountSpecial = main.querySelector('[data-campaigns="special_campaigns"]');
         if(specialDiscountValue !== 0){
